@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import  { axiosWithAuth }  from "../utils/axiosWithAuth";
 import axios from "axios";
 
 const initialColor = {
@@ -16,23 +17,48 @@ const ColorList = ({ colors, updateColors }) => {
     setColorToEdit(color);
   };
 
-  const saveEdit = e => {
+  const saveEdit = (e) => {
     e.preventDefault();
     // Make a put request to save your updated color
     // think about where will you get the id from...
-    // where is is saved right now?
+    console.log(colors);
+    axios.put(`/api/colors/${colors.id}`, colorToEdit )
   };
+    // where is is saved right now?
+
 
   const deleteColor = color => {
-    // make a delete request to delete this color
+    axios.delete(`/api/colors/${color.id}`)
+
   };
 
+
+useEffect(() => {
+    const greenYellow = {
+      color: "greenyellow",
+      code: {
+        hex: "#adff2f",
+        id: 12,
+      },
+    };
+    
+    axiosWithAuth()
+      .post("http://localhost:5000/api/colors", greenYellow)
+      .then((res) => {
+        //console.log(res);
+      })
+      .catch((error) => {
+        console.error("Server Error", error);
+      });
+  }, []);
+  
+  
   return (
     <div className="colors-wrap">
       <p>colors</p>
       <ul>
         {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
+          <li key={color.color.id} onClick={() => editColor(color)}>
             <span>
               <span className="delete" onClick={e => {
                     e.stopPropagation();
