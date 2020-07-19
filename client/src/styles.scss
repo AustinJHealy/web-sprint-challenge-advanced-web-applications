@@ -8,6 +8,8 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .App {
@@ -64,6 +66,7 @@ form {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
+  
 
   legend {
     padding-left: 40px;
@@ -80,7 +83,7 @@ form {
   }
 
   input {
-    width: 100px;
+    width: 300px;
   }
 }
 
@@ -91,9 +94,10 @@ form {
 
   button {
     border: none;
-    background-color: black;
+    background-color : black;
     color: white;
     padding: 3px 8px;
     margin-top: 16px;
+  
   }
 }
