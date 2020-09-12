@@ -5,6 +5,8 @@ import Login from "./components/Login";
 import "./styles.scss";
 import PrivateRoute from "./utils/PrivateRoute";
 import BubblePage from "./components/BubblePage";
+//import ContactForm from "./components/ContactForm";
+
 function App() {
   return (
     <Router>
@@ -15,6 +17,8 @@ function App() {
           display BubblePage when you're authenticated 
         */}
         <PrivateRoute exact path="/bubble-page" component={BubblePage} />
+        
+        {/*<PrivateRoute exact path="contact-page" component={ContactForm} />*/}
       </div>
     </Router>
   );

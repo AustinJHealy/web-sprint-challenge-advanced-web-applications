@@ -47,7 +47,7 @@ const ColorList = ({ colors, getColors }) => {
     let id = color.id;
     // console.log(id);
     axiosWithAuth()
-     .delete(`/api/colors/${id}`, colorToEdit)
+     .delete(`/api/colors/${id}`)
      .then(() => {
        setEditing(false);
        getColors();
@@ -128,7 +128,7 @@ const ColorList = ({ colors, getColors }) => {
       <div className="spacer" />
 
      
-       <div className="add" >Add a Color
+       <div className="add" >
         <form onSubmit = {addColor}>
           <h3>Add Color</h3>
           <label>
@@ -141,7 +141,7 @@ const ColorList = ({ colors, getColors }) => {
             />
           </label>
           <label>
-            hex code:
+            Hex code:
             <input
               onChange={e =>
                 setNewColor({
@@ -152,11 +152,9 @@ const ColorList = ({ colors, getColors }) => {
               value={newColor.code.hex}
             />
           </label>
-          <button>add</button>
+          <button>Add</button>
         </form>
       </div>
-      
-     */}
      </div>
   );
 }; 
